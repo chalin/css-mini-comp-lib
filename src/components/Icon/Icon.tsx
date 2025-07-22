@@ -21,7 +21,12 @@ interface IconProps {
   [key: string]: any; // for delegated props
 }
 
-const Icon: React.FC<IconProps> = ({ id, size, strokeWidth = 1, ...delegated }) => {
+const Icon: React.FC<IconProps> = ({
+  id,
+  size,
+  strokeWidth = 1,
+  ...delegated
+}) => {
   const Component = icons[id];
 
   if (!Component) {
@@ -30,10 +35,12 @@ const Icon: React.FC<IconProps> = ({ id, size, strokeWidth = 1, ...delegated }) 
 
   return (
     <Wrapper
-      style={{
-        '--size': `${size}px`,
-        '--stroke-width': `${strokeWidth}px`,
-      } as React.CSSProperties}
+      style={
+        {
+          '--size': `${size}px`,
+          '--stroke-width': `${strokeWidth}px`,
+        } as React.CSSProperties
+      }
       {...delegated}
     >
       <Component color="currentColor" size={size} />

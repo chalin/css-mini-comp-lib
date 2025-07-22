@@ -6,7 +6,10 @@ interface VisuallyHiddenProps {
   [key: string]: any; // for delegated props
 }
 
-const VisuallyHidden: React.FC<VisuallyHiddenProps> = ({ children, ...delegated }) => {
+const VisuallyHidden: React.FC<VisuallyHiddenProps> = ({
+  children,
+  ...delegated
+}) => {
   const [forceShow, setForceShow] = React.useState(false);
 
   React.useEffect(() => {

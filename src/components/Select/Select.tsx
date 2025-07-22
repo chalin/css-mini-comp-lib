@@ -13,7 +13,13 @@ interface SelectProps {
   children: React.ReactNode;
 }
 
-const Select: React.FC<SelectProps> = ({ id, label, value, onChange, children }) => {
+const Select: React.FC<SelectProps> = ({
+  id,
+  label,
+  value,
+  onChange,
+  children,
+}) => {
   const displayedValue = getDisplayedValue(value, children);
 
   return (

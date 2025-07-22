@@ -1,6 +1,9 @@
 import React from 'react';
 
-export function getDisplayedValue(value: string, children: React.ReactNode): string {
+export function getDisplayedValue(
+  value: string,
+  children: React.ReactNode,
+): string {
   const childArray = React.Children.toArray(children);
 
   for (const child of childArray) {
