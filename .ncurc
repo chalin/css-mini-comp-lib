@@ -1,0 +1,13 @@
+{
+  "reject": [
+    "@storybook/addon-actions",
+    "@storybook/addon-controls",
+    "@storybook/addon-essentials",
+    "@storybook/addon-links",
+    "@storybook/blocks",
+    "@storybook/react",
+    "@storybook/react-vite",
+    "@storybook/testing-library",
+    "storybook"
+  ]
+}

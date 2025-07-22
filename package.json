@@ -17,7 +17,7 @@
     "build": "storybook build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "update:packages": "npx npm-check-updates --dep 'prod,dev,optional,peer' -u"
+    "update:packages": "ncu -u"
   },
   "eslintConfig": {
     "extends": [
@@ -46,8 +46,12 @@
     "@storybook/react": "^8.6.14",
     "@storybook/react-vite": "^8.6.14",
     "@storybook/testing-library": "^0.2.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/styled-components": "^5.1.34",
     "npm-check-updates": "^18.0.1",
     "storybook": "^8.6.14",
+    "typescript": "^5.8.3",
     "vite": "^7.0.5"
   }
 }
