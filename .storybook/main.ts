@@ -16,7 +16,11 @@ const config = {
     options: {}
   },
   docs: {
-    autodocs: "tag" // cSpell:disable-line
+    autodocs: "tag"
+  },
+  typescript: {
+    check: true,
+    reactDocgen: 'react-docgen-typescript',
   }
 };
 
