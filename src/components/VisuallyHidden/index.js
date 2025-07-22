@@ -1,1 +1,1 @@
-export { default } from './VisuallyHidden.jsx';
+export { default } from './VisuallyHidden';

@@ -1,7 +1,8 @@
 import React from 'react';
-import IconInput from './IconInput.jsx';
+import type { Meta, StoryObj } from '@storybook/react';
+import IconInput from './IconInput';
 
-export default {
+const meta: Meta<typeof IconInput> = {
   title: 'IconInput',
   component: IconInput,
   argTypes: {
@@ -35,7 +36,10 @@ export default {
   },
 };
 
-export const Default = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
     placeholder: 'Search…',
     label: 'Search',

@@ -1,1 +1,1 @@
-export { default } from './IconInput.jsx';
+export { default } from './IconInput';

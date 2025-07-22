@@ -1,7 +1,8 @@
 import React from 'react';
-import ProgressBar from './ProgressBar.jsx';
+import type { Meta, StoryObj } from '@storybook/react';
+import ProgressBar from './ProgressBar';
 
-export default {
+const meta: Meta<typeof ProgressBar> = {
   title: 'ProgressBar',
   component: ProgressBar,
   argTypes: {
@@ -21,7 +22,10 @@ export default {
   },
 };
 
-export const Default = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
     value: 50,
     size: 'medium',

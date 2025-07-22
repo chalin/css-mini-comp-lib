@@ -14,7 +14,14 @@ const icons = {
   'chevron-down': ChevronDown,
 };
 
-const Icon = ({ id, size, strokeWidth = 1, ...delegated }) => {
+interface IconProps {
+  id: keyof typeof icons;
+  size: number;
+  strokeWidth?: number;
+  [key: string]: any; // for delegated props
+}
+
+const Icon: React.FC<IconProps> = ({ id, size, strokeWidth = 1, ...delegated }) => {
   const Component = icons[id];
 
   if (!Component) {
@@ -24,9 +31,9 @@ const Icon = ({ id, size, strokeWidth = 1, ...delegated }) => {
   return (
     <Wrapper
       style={{
-        '--size': size + 'px',
-        '--stroke-width': strokeWidth + 'px',
-      }}
+        '--size': `${size}px`,
+        '--stroke-width': `${strokeWidth}px`,
+      } as React.CSSProperties}
       {...delegated}
     >
       <Component color="currentColor" size={size} />

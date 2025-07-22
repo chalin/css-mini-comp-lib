@@ -12,11 +12,14 @@
     "styled-components": "^6.1.19"
   },
   "scripts": {
-    "dev": "storybook dev -p 6006",
-    "start": "npm run dev",
     "build": "storybook build",
-    "test": "react-scripts test",
+    "check:lint": "eslint src",
+    "check:types": "tsc --noEmit",
+    "check": "npm run check:lint && npm run check:types",
+    "dev": "storybook dev -p 6006",
     "eject": "react-scripts eject",
+    "start": "npm run dev",
+    "test": "react-scripts test",
     "update:packages": "ncu -u"
   },
   "eslintConfig": {
