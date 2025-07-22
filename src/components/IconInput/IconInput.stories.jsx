@@ -1,10 +1,10 @@
-import { Meta, Story } from '@storybook/addon-docs/blocks';
-import IconInput from './IconInput';
+import React from 'react';
+import IconInput from './IconInput.jsx';
 
-<Meta
-  title="IconInput"
-  component={IconInput}
-  argTypes={{
+export default {
+  title: 'IconInput',
+  component: IconInput,
+  argTypes: {
     placeholder: {
       control: {
         type: 'text',
@@ -32,21 +32,14 @@ import IconInput from './IconInput';
         type: 'number',
       },
     },
-  }}
-/>
+  },
+};
 
-export const Template = (args) => <IconInput {...args} />;
-
-# IconInput
-
-<Story
-  name="Default"
-  args={{
+export const Default = {
+  args: {
     placeholder: 'Search…',
     label: 'Search',
     icon: 'search',
     size: 'small',
-  }}
->
-  {Template.bind({})}
-</Story>
+  },
+};

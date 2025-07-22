@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
-import Icon from '../Icon';
+import Icon from '../Icon/Icon.jsx';
 import { getDisplayedValue } from './Select.helpers';
 
 const Select = ({ label, value, onChange, children }) => {

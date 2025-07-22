@@ -1,12 +1,24 @@
-module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+import { join, dirname } from "path";
+
+/** @type { import('@storybook/react-vite').StorybookConfig } */
+const config = {
+  stories: [
+    "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
-  "addons": [
+  addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/preset-create-react-app",
-    '@storybook/addon-controls'
-  ]
-}
+    "@storybook/addon-controls",
+    "@storybook/addon-actions"
+  ],
+  framework: {
+    name: "@storybook/react-vite",
+    options: {}
+  },
+  docs: {
+    autodocs: "tag" // cSpell:disable-line
+  }
+};
+
+export default config;

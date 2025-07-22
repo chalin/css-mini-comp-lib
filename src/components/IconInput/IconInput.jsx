@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
 
-import Icon from '../Icon';
-import VisuallyHidden from '../VisuallyHidden';
+import Icon from '../Icon/Icon.jsx';
+import VisuallyHidden from '../VisuallyHidden/VisuallyHidden.jsx';
 
 const IconInput = ({
   label,

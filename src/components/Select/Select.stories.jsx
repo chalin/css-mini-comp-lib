@@ -1,11 +1,12 @@
-import { Meta, Story } from '@storybook/addon-docs/blocks';
-import Select from './Select';
+import React from 'react';
+import Select from './Select.jsx';
 
-<Meta title="Select" component={Select} />
+export default {
+  title: 'Select',
+  component: Select,
+};
 
-# Select
-
-export const ManagedSelect = () => {
+export const Default = () => {
   const [value, setValue] = React.useState('newest');
   return (
     <>
@@ -31,7 +32,3 @@ export const ManagedSelect = () => {
     </>
   );
 };
-
-<Story name="Default">
-  <ManagedSelect />
-</Story>
