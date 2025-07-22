@@ -16,9 +16,9 @@ const icons = {
 
 interface IconProps {
   id: keyof typeof icons;
-  size: number;
+  size?: number;
   strokeWidth?: number;
-  [key: string]: any; // for delegated props
+  [key: string]: unknown; // for delegated props
 }
 
 const Icon: React.FC<IconProps> = ({

@@ -10,31 +10,34 @@ const meta: Meta<typeof Select> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Create a proper React component to avoid Hook rules violation
+const SelectWithState = () => {
+  const [value, setValue] = React.useState('newest');
+  return (
+    <>
+      <label
+        htmlFor="filter-by"
+        style={{
+          display: 'block',
+          marginBottom: '0.5em',
+        }}
+      >
+        Filter by:
+      </label>
+      <Select
+        id="filter-by"
+        label="Sort"
+        value={value}
+        onChange={(ev) => setValue(ev.target.value)}
+      >
+        <option value="newest">Newest Releases</option>
+        <option value="price">Price</option>
+        <option value="curated">Curated</option>
+      </Select>
+    </>
+  );
+};
+
 export const Default: Story = {
-  render: () => {
-    const [value, setValue] = React.useState('newest');
-    return (
-      <>
-        <label
-          htmlFor="filter-by"
-          style={{
-            display: 'block',
-            marginBottom: '0.5em',
-          }}
-        >
-          Filter by:
-        </label>
-        <Select
-          id="filter-by"
-          label="Sort"
-          value={value}
-          onChange={(ev) => setValue(ev.target.value)}
-        >
-          <option value="newest">Newest Releases</option>
-          <option value="price">Price</option>
-          <option value="curated">Curated</option>
-        </Select>
-      </>
-    );
-  },
+  render: () => <SelectWithState />,
 };

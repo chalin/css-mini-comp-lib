@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import VisuallyHidden from './VisuallyHidden';
 import Icon from '../Icon/Icon';
 
@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <>
-      <Icon id="search" size={16} />
+      <Icon id="search" />
       <VisuallyHidden>Search</VisuallyHidden>
     </>
   ),

@@ -2,6 +2,7 @@
   "name": "mini-component-library",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "babel-loader": "^10.0.0",
     "babel-plugin-styled-components": "^2.1.4",
