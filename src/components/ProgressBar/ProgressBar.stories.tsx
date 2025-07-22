@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import ProgressBar from './ProgressBar';
+import type { Size } from './ProgressBar';
 
 const meta: Meta<typeof ProgressBar> = {
   title: 'ProgressBar',
@@ -16,7 +17,7 @@ const meta: Meta<typeof ProgressBar> = {
     size: {
       control: {
         type: 'select',
-        options: ['small', 'medium', 'large'],
+        options: ['small', 'medium', 'large'] as Size[],
       },
     },
   },

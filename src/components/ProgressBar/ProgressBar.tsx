@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants';
 import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
 
+export type Size = 'small' | 'medium' | 'large';
 interface ProgressBarProps {
   value: number;
-  size?: 'small' | 'medium' | 'large';
+  size?: Size;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ value, size }) => {
