@@ -11,7 +11,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Create a proper React component to avoid Hook rules violation
-const SelectWithState = () => {
+const ManagedSelect = () => {
   const [value, setValue] = React.useState('newest');
   return (
     <>
@@ -25,7 +25,7 @@ const SelectWithState = () => {
         Filter by:
       </label>
       <Select
-        id="filter-by"
+        // id="filter-by"
         label="Sort"
         value={value}
         onChange={(ev) => setValue(ev.target.value)}
@@ -39,5 +39,5 @@ const SelectWithState = () => {
 };
 
 export const Default: Story = {
-  render: () => <SelectWithState />,
+  render: () => <ManagedSelect />,
 };

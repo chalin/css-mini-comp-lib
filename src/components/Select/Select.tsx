@@ -6,7 +6,6 @@ import Icon from '../Icon/Icon';
 import { getDisplayedValue } from './Select.helpers';
 
 interface SelectProps {
-  id?: string;
   label: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -14,7 +13,6 @@ interface SelectProps {
 }
 
 const Select: React.FC<SelectProps> = ({
-  id,
   label,
   value,
   onChange,
@@ -23,7 +21,7 @@ const Select: React.FC<SelectProps> = ({
   const displayedValue = getDisplayedValue(value, children);
 
   return (
-    <select id={id} value={value} onChange={onChange}>
+    <select value={value} onChange={onChange}>
       {children}
     </select>
   );
