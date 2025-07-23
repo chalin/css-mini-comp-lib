@@ -22,6 +22,7 @@
     "eject": "react-scripts eject",
     "fix:format": "npm run _check:format -- --write",
     "format": "npm run fix:format --",
+    "prep": "npm run fix:format && npm run check",
     "start": "npm run dev",
     "test": "react-scripts test",
     "update:packages": "ncu -u"

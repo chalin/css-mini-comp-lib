@@ -4,6 +4,10 @@
  * interested, but otherwise you can rely on our docs to learn its
  * API / which props it takes.
  */
+
+// @chalin: I've tweaked this wrapper component to better match (IMHO) the
+// semantics of RF's Icons.
+
 import React from 'react';
 import styled from 'styled-components';
 import { Search, AtSign, ChevronDown } from 'react-feather';
@@ -37,20 +41,23 @@ const Icon: React.FC<IconProps> = ({
     <Wrapper
       style={
         {
-          '--size': size && `${size}px`,
+          // '--size': size && `${size}px`,
           '--stroke-width': `${strokeWidth}px`,
         } as React.CSSProperties
       }
+      // @chalin: I think that these should be applied to the icons, but will
+      // leave it here for now.
       {...delegated}
     >
-      <Component color="currentColor" size={size} />
+      <Component color="currentColor" {...(size && { size })} />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
-  width: var(--size);
-  height: var(--size);
+const Wrapper = styled.span`
+  display: inline-block;
+  // width: var(--size);
+  // height: var(--size);
 
   /*
     OMG I'm doing that thing I've warned against doing!
@@ -65,7 +72,7 @@ const Wrapper = styled.div`
     is coming from.
   */
   & > svg {
-    display: block;
+    // display: block; // Why override this?
     stroke-width: var(--stroke-width);
   }
 `;
