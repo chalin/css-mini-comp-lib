@@ -49,7 +49,10 @@ const Icon: React.FC<IconProps> = ({
       // leave it here for now.
       {...delegated}
     >
-      <Component color="currentColor" {...(size && { size })} />
+      <Component
+        color="currentColor"
+        size={size} // {...(size !== undefined && { size })}
+      />
     </Wrapper>
   );
 };
