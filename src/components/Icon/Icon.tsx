@@ -37,7 +37,7 @@ const Icon: React.FC<IconProps> = ({
     <Wrapper
       style={
         {
-          '--size': `${size}px`,
+          '--size': size && `${size}px`,
           '--stroke-width': `${strokeWidth}px`,
         } as React.CSSProperties
       }
