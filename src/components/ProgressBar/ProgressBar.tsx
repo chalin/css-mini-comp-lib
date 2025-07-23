@@ -54,6 +54,8 @@ const ProgressElt = styled.progress<StyledProgressProps>`
   border-radius: ${_sizeProp('borderRadius')};
   width: var(--width);
 
+  box-shadow: 0px 2px 4px 0px hsla(0, 0%, 50%, 0.35) inset;
+
   /* Webkit browsers (Chrome, Safari, Edge) */
   -webkit-appearance: none;
   &::-webkit-progress-bar {
@@ -64,20 +66,28 @@ const ProgressElt = styled.progress<StyledProgressProps>`
   &::-webkit-progress-value {
     background-color: ${COLORS.primary};
     border-radius: ${_sizeProp('borderRadius')} 0 0 ${_sizeProp('borderRadius')};
-    border-radius: 4 0 0 4;
+    border-radius: 4px 0 0 4px;
+    &[value == 100] {
+      border-radius: 4px;
+    }
   }
 
   &::-webkit-progress-inner-element {
-    box-shadow: 0px 2px 4px 0px hsla(0, 0%, 50%, 0.35) inset;
     border-radius: ${_sizeProp('borderRadius')};
   }
 
   /* Firefox */
   -moz-appearance: none;
   &::-moz-progress-bar {
-    border: 1px solid ${COLORS.primary};
-    background-color: ${COLORS.primary};
-    // box-shadow: 0px 2px 4px 0px hsla(0, 0%, 50%, 0.35) inset;
+    // padding: ${_sizeProp('padding')};
+    margin-top: ${_sizeProp('padding')};
+    margin-bottom: ${_sizeProp('padding')};
+    margin-left: ${_sizeProp('padding')};
+    height: calc(100% - ${_sizeProp('padding')} * 2);
+    // border: 1px solid ${COLORS.primary};
+    &[value != 0] {
+      background-color: ${COLORS.primary};
+    }
   }
 `;
 
