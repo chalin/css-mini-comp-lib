@@ -30,5 +30,6 @@ export const Default: Story = {
   args: {
     value: 50,
     size: 'medium',
+    width: 370,
   },
 };
