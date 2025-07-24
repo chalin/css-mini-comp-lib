@@ -1,9 +1,10 @@
 @import '../../styles/variables.scss';
 
+$component-id: 'progress-bar';
 $grid-size: 4px;
 
 .progressBar {
-  width: var(--width);
+  width: var(--#{$component-id}-width);
   background-color: $color-transparent-gray-15;
   box-shadow: 0px 2px 4px 0px $color-transparent-gray-35 inset;
 
@@ -35,5 +36,5 @@ $grid-size: 4px;
 .bar {
   background-color: $color-primary;
   height: 100%;
-  width: var(--progress-width);
+  width: var(--#{$component-id}-progress-width);
 }

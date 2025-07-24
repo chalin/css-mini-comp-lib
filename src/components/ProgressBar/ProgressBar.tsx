@@ -27,14 +27,16 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     _value < minValue ? minValue : _value > maxValue ? maxValue : _value;
   const width = _width < minWidth ? minWidth : _width;
 
+  const componentId = 'progress-bar';
+
   return (
     <div
       {...delegated}
       className={`${styles.progressBar} ${styles[size]}`}
       style={
         {
-          '--width': width + 'px',
-          '--progress-width': value + '%',
+          [`--${componentId}-width`]: width + 'px',
+          [`--${componentId}-progress-width`]: value + '%',
         } as React.CSSProperties
       }
       role="progressbar"
