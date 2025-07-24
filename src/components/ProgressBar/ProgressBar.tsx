@@ -93,6 +93,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   value: _value,
   size = 'medium',
   width: _width = defaultWidth, // Match typical browser default
+  ...delegated
 }) => {
   // Normalize the value to be between 0 and 100
   const value = _value < 0 ? 0 : _value > 100 ? 100 : _value;
@@ -100,10 +101,14 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <ProgressElt
+      {...delegated}
       value={value}
       max={100}
       style={{ '--width': width + 'px' } as React.CSSProperties}
       size={size}
+      // Apparently unnecessary for <progress> elements:
+      // role="progressbar"
+      // aria-valuenow={value}
     >
       {value + '%'}
     </ProgressElt>
