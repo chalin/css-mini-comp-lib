@@ -1,16 +1,14 @@
 @use '../../styles/variables.scss' as *;
-@use 'sass:string';
+
+$component-id: 'progress-bar';
+
+@function component-var($name) {
+  @return var(--#{$component-id}-#{$name});
+}
 
 $grid-size: 4px;
-$component-id: 'progress-bar0';
 
 .progressBar {
-  $component-id: #{string.slice(#{&}, 2)};
-
-  @function component-var($name) {
-    @return var(--#{$component-id}-#{$name});
-  }
-  
   width: component-var('width');
   background-color: $color-transparent-gray-15;
   box-shadow: 0px 2px 4px 0px $color-transparent-gray-35 inset;
