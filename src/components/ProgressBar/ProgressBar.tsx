@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
 import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
+import styles from './ProgressBar.module.scss';
 
 export type Size = 'small' | 'medium' | 'large';
 interface ProgressBarProps {
@@ -35,41 +35,6 @@ const sizeProps: SizeProps = {
   },
 };
 
-interface StyledProgressProps {
-  size?: Size;
-  value?: number;
-}
-
-const _sizeProp =
-  (propName: keyof SizeProps[Size]) => (props: StyledProgressProps) =>
-    props.size && sizeProps[props.size][propName];
-
-// Using notes from https://css-tricks.com/html5-progress-element/
-
-const ProgressElt = styled.div<StyledProgressProps>`
-  height: ${_sizeProp('height')};
-  width: var(--width);
-
-  background-color: ${COLORS.transparentGray15};
-  border-radius: ${_sizeProp('borderRadius')};
-  box-shadow: 0px 2px 4px 0px hsla(0, 0%, 50%, 0.35) inset;
-
-  padding: ${_sizeProp('padding')};
-`;
-
-const BarContainer = styled.div`
-  border-radius: ${GRID_SIZE};
-  // Ensure bar has rounded corners at start and end of the bar
-  overflow: hidden;
-  height: 100%;
-`;
-
-const Bar = styled.div<StyledProgressProps>`
-  background-color: ${COLORS.primary};
-  height: 100%;
-  width: ${({ value }) => value + '%'};
-`;
-
 const minValue = 0;
 const maxValue = 100;
 const minWidth = 10;
@@ -78,7 +43,7 @@ const defaultWidth = 160;
 const ProgressBar: React.FC<ProgressBarProps> = ({
   value: _value,
   size = 'medium',
-  width: _width = defaultWidth, // Match typical browser default
+  width: _width = defaultWidth,
   ...delegated
 }) => {
   // Normalize the value to be between 0 and 100
@@ -86,25 +51,31 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     _value < minValue ? minValue : _value > maxValue ? maxValue : _value;
   const width = _width < minWidth ? minWidth : _width;
 
+  const sizeConfig = sizeProps[size];
+
   return (
-    <ProgressElt
+    <div
       {...delegated}
-      value={value}
-      style={{ '--width': width + 'px' } as React.CSSProperties}
-      size={size}
-      // Accessibility:
+      className={styles.progressBar}
+      style={
+        {
+          '--height': sizeConfig.height,
+          '--width': width + 'px',
+          '--bg-color': COLORS.transparentGray15,
+          '--border-radius': sizeConfig.borderRadius,
+          '--padding': sizeConfig.padding,
+          '--primary-color': COLORS.primary,
+          '--progress-width': value + '%',
+        } as React.CSSProperties
+      }
       role="progressbar"
       aria-valuenow={value}
-      // Unnecessary when using 0-100 defaults
-      // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/progressbar_role#description:
-      // aria-valuemin={minValue}
-      // aria-valuemax={maxValue}
     >
       <VisuallyHidden>{value + '%'}</VisuallyHidden>
-      <BarContainer>
-        <Bar value={value} />
-      </BarContainer>
-    </ProgressElt>
+      <div className={styles.barContainer}>
+        <div className={styles.bar} />
+      </div>
+    </div>
   );
 };
 
