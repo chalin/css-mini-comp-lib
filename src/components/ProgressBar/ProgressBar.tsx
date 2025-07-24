@@ -16,22 +16,22 @@ type SizeProps = Record<
   { height: string; borderRadius: string; padding: string }
 >;
 
-const borderRadiusDefault = '4px';
+const GRID_SIZE = '4px';
 const sizeProps: SizeProps = {
   small: {
     height: '8px',
-    borderRadius: borderRadiusDefault,
+    borderRadius: GRID_SIZE,
     padding: '0',
   },
   medium: {
     height: '12px',
-    borderRadius: borderRadiusDefault,
+    borderRadius: GRID_SIZE,
     padding: '0',
   },
   large: {
     height: '24px',
-    borderRadius: '8px',
-    padding: '4px',
+    borderRadius: `calc(2 * ${GRID_SIZE})`,
+    padding: GRID_SIZE,
   },
 };
 
@@ -53,19 +53,21 @@ const ProgressElt = styled.div<StyledProgressProps>`
   background-color: ${COLORS.transparentGray15};
   border-radius: ${_sizeProp('borderRadius')};
   box-shadow: 0px 2px 4px 0px hsla(0, 0%, 50%, 0.35) inset;
-  overflow: hidden;
 
   padding: ${_sizeProp('padding')};
+`;
 
-  .bar {
-    background-color: ${COLORS.primary};
-    height: 100%;
-    width: ${({ value }) => value + '%'};
-    background-color: ${COLORS.primary};
-    border-radius: ${borderRadiusDefault} 0 0 ${borderRadiusDefault};
-    ${({ value }) =>
-      value && value > 98 && `border-radius: ${borderRadiusDefault};`}
-  }
+const BarContainer = styled.div`
+  border-radius: ${GRID_SIZE};
+  // Ensure bar has rounded corners at start and end of the bar
+  overflow: hidden;
+  height: 100%;
+`;
+
+const Bar = styled.div<StyledProgressProps>`
+  background-color: ${COLORS.primary};
+  height: 100%;
+  width: ${({ value }) => value + '%'};
 `;
 
 const minValue = 0;
@@ -99,7 +101,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       // aria-valuemax={maxValue}
     >
       <VisuallyHidden>{value + '%'}</VisuallyHidden>
-      <div className="bar" />
+      <BarContainer>
+        <Bar value={value} />
+      </BarContainer>
     </ProgressElt>
   );
 };
