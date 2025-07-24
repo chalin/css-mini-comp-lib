@@ -35,7 +35,7 @@ const sizeProps: SizeProps = {
 
 interface StyledProgressProps {
   size?: Size;
-  isAlmostFull?: boolean;
+  value?: number;
 }
 
 const _sizeProp =
@@ -68,7 +68,7 @@ const ProgressElt = styled.progress<StyledProgressProps>`
     background-color: ${COLORS.primary};
     border-radius: ${_sizeProp('borderRadius')} 0 0 ${_sizeProp('borderRadius')};
     border-radius: 4px 0 0 4px;
-    ${({ isAlmostFull }) => isAlmostFull && 'border-radius: 4px;'}
+    ${({ value }) => value && value > 99 && 'border-radius: 4px;'}
   }
 
   &::-webkit-progress-inner-element {
@@ -78,23 +78,25 @@ const ProgressElt = styled.progress<StyledProgressProps>`
   /* Firefox */
   -moz-appearance: none;
   &::-moz-progress-bar {
-    // padding doesn't work in FF. Use margin instead.
     background-color: ${COLORS.primary};
-  }
-  &[value > 0]::-moz-progress-bar {
+    // padding doesn't work in FF. Approximate it with margin.
     margin: ${_sizeProp('padding')};
+    // Ensure we can see value of 1:
+    ${({ value }) => value === 1 && 'margin-right: 0;'}
     height: calc(100% - ${_sizeProp('padding')} * 2);
   }
 `;
 
+const minWidth = 10;
+const defaultWidth = 160;
 const ProgressBar: React.FC<ProgressBarProps> = ({
   value: _value,
   size = 'medium',
-  width = 160, // Match typical browser default
+  width: _width = defaultWidth, // Match typical browser default
 }) => {
   // Normalize the value to be between 0 and 100
   const value = _value < 0 ? 0 : _value > 100 ? 100 : _value;
-  const isAlmostFull = value > 99;
+  const width = _width < minWidth ? minWidth : _width;
 
   return (
     <ProgressElt
@@ -102,9 +104,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       max={100}
       style={{ '--width': width + 'px' } as React.CSSProperties}
       size={size}
-      isAlmostFull={isAlmostFull}
     >
-      {value}
+      {value + '%'}
     </ProgressElt>
   );
 };
