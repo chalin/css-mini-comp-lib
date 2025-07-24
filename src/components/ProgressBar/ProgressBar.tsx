@@ -27,7 +27,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     _value < minValue ? minValue : _value > maxValue ? maxValue : _value;
   const width = _width < minWidth ? minWidth : _width;
 
-  const componentId = 'progress-bar';
+  // Use the generated class name as component ID
+  const componentId = styles.progressBar || 'progress-bar';
 
   return (
     <div

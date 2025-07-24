@@ -1,10 +1,17 @@
-@import '../../styles/variables.scss';
+@use '../../styles/variables.scss' as *;
+@use 'sass:string';
 
-$component-id: 'progress-bar';
 $grid-size: 4px;
+$component-id: 'progress-bar0';
 
 .progressBar {
-  width: var(--#{$component-id}-width);
+  $component-id: #{string.slice(#{&}, 2)};
+
+  @function component-var($name) {
+    @return var(--#{$component-id}-#{$name});
+  }
+  
+  width: component-var('width');
   background-color: $color-transparent-gray-15;
   box-shadow: 0px 2px 4px 0px $color-transparent-gray-35 inset;
 
@@ -25,16 +32,16 @@ $grid-size: 4px;
     border-radius: 2 * $grid-size;
     padding: $grid-size;
   }
-}
 
-.barContainer {
-  border-radius: $grid-size;
-  overflow: hidden;
-  height: 100%;
-}
+  .barContainer {
+    border-radius: $grid-size;
+    overflow: hidden;
+    height: 100%;
+  }
 
-.bar {
-  background-color: $color-primary;
-  height: 100%;
-  width: var(--#{$component-id}-progress-width);
+  .bar {
+    background-color: $color-primary;
+    height: 100%;
+    width: component-var('progress-width');
+  }
 }
