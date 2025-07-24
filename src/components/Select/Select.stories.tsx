@@ -25,7 +25,7 @@ const ManagedSelect = () => {
         Filter by:
       </label>
       <Select
-        // id="filter-by"
+        id="filter-by"
         label="Sort"
         value={value}
         onChange={(ev) => setValue(ev.target.value)}
