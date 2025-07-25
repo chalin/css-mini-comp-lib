@@ -82,12 +82,17 @@ const IconInput: React.FC<IconInputProps> = ({
 
   const id = React.useId();
 
+  // Design: we put the icon inside the label so that the input can be focused
+  // by clicking on the icon.
+
   return (
     <Wrapper className={size} style={widthProp}>
       <VisuallyHidden>
         <label htmlFor={id}>{label}</label>
       </VisuallyHidden>
-      <StyledIcon id={icon} strokeWidth={strokeWidth} size={iconSize} />
+      <label htmlFor={id}>
+        <StyledIcon id={icon} strokeWidth={strokeWidth} size={iconSize} />
+      </label>
       <Input
         type="text"
         placeholder={placeholder}
