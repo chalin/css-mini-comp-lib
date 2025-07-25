@@ -14,13 +14,10 @@ interface IconInputProps {
   placeholder?: string;
 }
 
-const Wrapper = styled.div<{ style: React.CSSProperties }>`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+const Wrapper = styled.div`
+  position: relative;
+  width: var(--width);
   border-bottom: 1px solid ${COLORS.black};
-
-  font-weight: 700;
 
   &.small {
     font-size: ${14 / 16}rem;
@@ -32,36 +29,44 @@ const Wrapper = styled.div<{ style: React.CSSProperties }>`
     line-height: ${21 / 16}rem;
     border-bottom-width: 2px;
   }
-  width: var(--width);
-
-  &:focus-within {
-    outline: 2px solid Highlight;
-    outline-color: -webkit-focus-ring-color;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
 `;
 
 const Input = styled.input`
   appearance: none;
   border: none;
+  width: 100%;
+
   color: ${COLORS.gray700};
   font-size: inherit;
   line-height: inherit;
-  font-weight: inherit;
+  font-weight: 700;
 
-  &:focus {
-    outline: none;
-    box-shadow: none;
+  margin-bottom: ${2 / 16}rem;
+
+  &.small {
+    padding-left: ${24 / 16}rem;
+  }
+
+  &.large {
+    padding-left: ${32 / 16}rem;
   }
 
   &::placeholder {
     color: ${COLORS.gray500};
+    font-size: inherit;
+    line-height: inherit;
     font-weight: 400;
+  }
+
+  &:focus {
+    outline-offset: 8px;
   }
 `;
 
 const StyledIcon = styled(Icon)`
+  position: absolute;
+  left: 0;
+  bottom: 0;
   color: ${COLORS.gray700};
 `;
 
@@ -83,17 +88,15 @@ const IconInput: React.FC<IconInputProps> = ({
 
   const id = React.useId();
 
-  // Design: we put the icon inside the label so that the input can be focused
-  // by clicking on the icon.
-
   return (
     <Wrapper className={size} style={widthProp}>
       <label htmlFor={id}>
-      <VisuallyHidden>{label}</VisuallyHidden>
-      <StyledIcon id={icon} strokeWidth={strokeWidth} size={iconSize} />
+        <VisuallyHidden>{label}</VisuallyHidden>
       </label>
+      <StyledIcon id={icon} strokeWidth={strokeWidth} size={iconSize} />
       <Input
         type="text"
+        className={size}
         placeholder={placeholder}
         id={id}
         aria-labelledby={id}
