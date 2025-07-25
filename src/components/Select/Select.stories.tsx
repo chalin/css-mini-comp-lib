@@ -30,15 +30,15 @@ const ManagedSelect = () => {
         value={value}
         onChange={(ev) => setValue(ev.target.value)}
       >
-        <option value="newest">Newest Releases</option>
+        <option value="newest"><b>Newest</b> Releases</option>
         <option value="price">Price</option>
         <option value="curated">Curated</option>
         <option value="long">Really long selected option!</option>
       </Select>
       <hr />
       <select>
-        <option value="newest">Newest Releases</option>
-        <option value="price">Price</option>
+      <option value="newest"><b>Newest</b> Releases</option>
+      <option value="price">Price</option>
         <option value="curated">Curated</option>
         <option value="long">Really long selected option!</option>
       </select>

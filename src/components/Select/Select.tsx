@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
-import Icon from '../Icon/Icon';
+import { ChevronDown } from 'react-feather';
+// import Icon from '../Icon/Icon';
 import { getDisplayedValue } from './Select.helpers';
 
 interface SelectProps {
@@ -15,36 +16,28 @@ interface SelectProps {
 
 const SelectWrapper = styled.div`
   position: relative;
-  display: inline-block;
-  // min-height: 2.75rem;
-  cursor: pointer;
+  width: max-content;
 
   color: ${COLORS.gray700};
   background-color: ${COLORS.transparentGray15};
   // border: 2px solid transparent; // Figma says gray700 but that's not what it looks like
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
   font-size: 1rem;
   line-height: 1;
   font-weight: 400;
 
+  &:focus-within {
+    outline: 2px solid Highlight;
+    outline: 2px solid -webkit-focus-ring-color;
+    @supports (-moz-appearance: none) {
+      outline: 2px solid Highlight;
+    }
+  }
   &:hover {
     color: ${COLORS.black};
   }
-`;
-
-const sharedSelectStyles = `
-  padding: 0.75rem 1rem;
-  padding-right: 3.25rem;
-  background-color: transparent;
-  border: none;
-  border-radius: inherit;
-
-  color: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
 `;
 
 const StyledSelect = styled.select`
@@ -59,25 +52,35 @@ const StyledSelect = styled.select`
   height: 100%;
   width: 100%;
 
-  ${sharedSelectStyles}
-  color: blue;
+  // Trick to "hide" the select element by making it transparent, but still
+  // allow it to process clicks.
+  opacity: 0;
 `;
 
-const SelectIcon = styled(Icon)`
+const StyledChevronDown = styled(ChevronDown)`
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 12px;
+  right: 0.75rem;
   margin: auto 0;
-  height: 24px;
-  pointer-events: none; // Allow clicks to pass through to select
+
+  height: 1.5rem;
+  width: 1.5rem;
+
+  stroke-width: 2;
 `;
 
 const DisplayedOption = styled.div`
-  // white-space: nowrap;
-  ${sharedSelectStyles}
-  // For debugging, to see if text matches select text position
-  color: red;
+  padding: 0.75rem 1rem;
+  padding-right: 3.25rem;
+  background-color: transparent;
+  border: none;
+  border-radius: inherit;
+
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
 `;
 
 const Select: React.FC<SelectProps> = ({
@@ -91,10 +94,8 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <SelectWrapper>
-      <DisplayedOption>
-        {displayedValue}
-      </DisplayedOption>
-      <SelectIcon id="chevron-down" strokeWidth={2} />
+      <DisplayedOption>{displayedValue}</DisplayedOption>
+      <StyledChevronDown />
       <StyledSelect id={id} value={value} onChange={onChange}>
         {children}
       </StyledSelect>
