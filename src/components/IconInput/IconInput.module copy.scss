@@ -1,0 +1,53 @@
+@use '../../styles/variables.scss' as *;
+
+$min-width: 100px;
+
+.icon-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid $color-black;
+  font-weight: 700;
+  width: var(--width);
+
+  &.small {
+    font-size: 0.875rem; // 14/16
+    line-height: 1rem; // 16/16
+  }
+
+  &.large {
+    font-size: 1.125rem; // 18/16
+    line-height: 1.3125rem; // 21/16
+    border-bottom-width: 2px;
+  }
+
+  &:focus-within {
+    outline: 2px solid Highlight;
+    outline-color: -webkit-focus-ring-color;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+.input {
+  appearance: none;
+  border: none;
+  color: $color-gray-700;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: $color-gray-500;
+    font-weight: 400;
+  }
+}
+
+.icon {
+  color: $color-gray-700;
+}
