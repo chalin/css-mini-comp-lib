@@ -22,13 +22,12 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   width: _width = defaultWidth,
   ...delegated
 }) => {
-  // Normalize the value to be between 0 and 100
+  // Normalize args
   const value =
     _value < minValue ? minValue : _value > maxValue ? maxValue : _value;
   const width = _width < minWidth ? minWidth : _width;
 
-  // Use the generated class name as component ID
-  const componentId = 'progress-bar';
+  const componentId = 'progress-bar'; // Should match name in module.scss
 
   return (
     <div

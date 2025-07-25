@@ -8,7 +8,7 @@ $component-id: 'progress-bar';
 
 $grid-size: 4px;
 
-.progressBar {
+.progress-bar {
   width: component-var('width');
   background-color: $color-transparent-gray-15;
   box-shadow: 0px 2px 4px 0px $color-transparent-gray-35 inset;
@@ -31,7 +31,7 @@ $grid-size: 4px;
     padding: $grid-size;
   }
 
-  .barContainer {
+  .bar-container {
     border-radius: $grid-size;
     overflow: hidden;
     height: 100%;
