@@ -24,17 +24,30 @@ const StyledSelect = styled.select`
   line-height: 1;
   font-weight: 400;
   color: ${COLORS.gray700};
-  height: 43px;
   background-color: ${COLORS.transparentGray15};
   border: 2px solid transparent; // Figma says gray700 but that's not what it looks like
   border-radius: 8px;
 
-  padding: 12px 16px;
-  padding-right: 52px;
+  padding: 0.75rem 1rem;
+  padding-right: 3.25rem;
+
+`;
+
+const SelectWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  height: 43px;
   cursor: pointer;
   &:hover {
     color: ${COLORS.black};
   }
+`;
+
+const SelectIcon = styled(Icon)`
+  position: absolute;
+  right: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
 `;
 
 const Select: React.FC<SelectProps> = ({
@@ -47,9 +60,12 @@ const Select: React.FC<SelectProps> = ({
   const displayedValue = getDisplayedValue(value, children);
 
   return (
-    <StyledSelect id={id} value={value} onChange={onChange}>
-      {children}
-    </StyledSelect>
+    <SelectWrapper>
+      <StyledSelect id={id} value={value} onChange={onChange}>
+        {children}
+      </StyledSelect>
+      <SelectIcon id="chevron-down" />
+    </SelectWrapper>
   );
 };
 
