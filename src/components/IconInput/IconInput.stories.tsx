@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import IconInput from './IconInputCssMod';
+import IconInput from './IconInput';
 
 const meta: Meta<typeof IconInput> = {
   title: 'IconInput',
