@@ -33,7 +33,21 @@ const ManagedSelect = () => {
         <option value="newest">Newest Releases</option>
         <option value="price">Price</option>
         <option value="curated">Curated</option>
+        <option value="long">Really long selected option!</option>
       </Select>
+      <hr />
+      <select>
+        <option value="newest">Newest Releases</option>
+        <option value="price">Price</option>
+        <option value="curated">Curated</option>
+        <option value="long">Really long selected option!</option>
+      </select>
+      <hr />
+      <select>
+        <option value="newest">New</option>
+        <option value="price">Price</option>
+        <option value="curated">Curated</option>
+      </select>
     </>
   );
 };
