@@ -1,4 +1,4 @@
-// CSS Module version
+// CSS Module version of AllInput variant(?)
 
 import React from 'react';
 import Icon from '../Icon';
@@ -31,9 +31,10 @@ const IconInput: React.FC<IconInputProps> = ({
 
   const id = React.useId();
 
+  const styleSize = size ? styles[size] : '';
   return (
     <div
-      className={`${styles.iconInput} ${size ? styles[size] : ''}`}
+      className={`${styles.iconInput} ${styleSize}`}
       style={widthProp}
     >
       <label htmlFor={id}>
@@ -42,12 +43,12 @@ const IconInput: React.FC<IconInputProps> = ({
       <Icon
         id={icon}
         strokeWidth={strokeWidth}
-        size={iconSize}
-        className={styles.icon}
+        //size={iconSize}
+        className={`${styles.icon} ${styleSize}`}
       />
       <input
         type="text"
-        className={`${styles.input} ${size ? styles[size] : ''}`}
+        className={`${styles.input} ${styleSize}`}
         placeholder={placeholder}
         id={id}
         aria-labelledby={id}

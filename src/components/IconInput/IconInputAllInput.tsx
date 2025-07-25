@@ -19,6 +19,8 @@ const Wrapper = styled.div`
   width: var(--width);
   border-bottom: 1px solid ${COLORS.black};
 
+  color: ${COLORS.gray700};
+
   &.small {
     font-size: ${14 / 16}rem;
     line-height: ${16 / 16}rem;
@@ -29,6 +31,10 @@ const Wrapper = styled.div`
     line-height: ${21 / 16}rem;
     border-bottom-width: 2px;
   }
+
+  &:hover {
+    color: ${COLORS.black};
+  }
 `;
 
 const Input = styled.input`
@@ -36,7 +42,7 @@ const Input = styled.input`
   border: none;
   width: 100%;
 
-  color: ${COLORS.gray700};
+  color: inherit;
   font-size: inherit;
   line-height: inherit;
   font-weight: 700;
@@ -67,7 +73,7 @@ const StyledIcon = styled(Icon)`
   position: absolute;
   left: 0;
   bottom: 0;
-  color: ${COLORS.gray700};
+  color: inherit;
 `;
 
 const minWidth = 100;
