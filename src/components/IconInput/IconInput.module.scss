@@ -3,12 +3,9 @@
 $min-width: 100px;
 
 .icon-input {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-bottom: 1px solid $color-black;
-  font-weight: 700;
+  position: relative;
   width: var(--width);
+  border-bottom: 1px solid $color-black;
 
   &.small {
     font-size: 0.875rem; // 14/16
@@ -20,34 +17,41 @@ $min-width: 100px;
     line-height: 1.3125rem; // 21/16
     border-bottom-width: 2px;
   }
-
-  &:focus-within {
-    outline: 2px solid Highlight;
-    outline-color: -webkit-focus-ring-color;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
 }
 
 .input {
   appearance: none;
   border: none;
+  width: 100%;
   color: $color-gray-700;
   font-size: inherit;
   line-height: inherit;
-  font-weight: inherit;
+  font-weight: 700;
+  margin-bottom: 0.125rem; // 2/16
 
-  &:focus {
-    outline: none;
-    box-shadow: none;
+  &.small {
+    padding-left: 1.5rem; // 24/16
+  }
+
+  &.large {
+    padding-left: 2rem; // 32/16
   }
 
   &::placeholder {
     color: $color-gray-500;
+    font-size: inherit;
+    line-height: inherit;
     font-weight: 400;
+  }
+
+  &:focus {
+    outline-offset: 8px;
   }
 }
 
 .icon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   color: $color-gray-700;
 }

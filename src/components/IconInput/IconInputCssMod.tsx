@@ -25,12 +25,9 @@ const IconInput: React.FC<IconInputProps> = ({
   const width = _width && _width < minWidth ? minWidth : _width;
   const widthProp = width
     ? ({ '--width': `${width}px` } as React.CSSProperties)
-    : {};
+    : {}; // fall back to default block width
 
   const id = React.useId();
-
-  // Design: we put the icon inside the label so that the input can be focused
-  // by clicking on the icon.
 
   return (
     <div
@@ -39,19 +36,19 @@ const IconInput: React.FC<IconInputProps> = ({
     >
       <label htmlFor={id}>
         <VisuallyHidden>{label}</VisuallyHidden>
-        <Icon
-          id={icon}
-          strokeWidth={strokeWidth}
-          size={iconSize}
-          className={styles.icon}
-        />
       </label>
+      <Icon
+        id={icon}
+        strokeWidth={strokeWidth}
+        size={iconSize}
+        className={styles.icon}
+      />
       <input
         type="text"
+        className={`${styles.input} ${size ? styles[size] : ''}`}
         placeholder={placeholder}
         id={id}
         aria-labelledby={id}
-        className={styles.input}
       />
     </div>
   );
