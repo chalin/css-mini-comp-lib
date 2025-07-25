@@ -87,11 +87,9 @@ const IconInput: React.FC<IconInputProps> = ({
 
   return (
     <Wrapper className={size} style={widthProp}>
-      <VisuallyHidden>
-        <label htmlFor={id}>{label}</label>
-      </VisuallyHidden>
       <label htmlFor={id}>
-        <StyledIcon id={icon} strokeWidth={strokeWidth} size={iconSize} />
+      <VisuallyHidden>{label}</VisuallyHidden>
+      <StyledIcon id={icon} strokeWidth={strokeWidth} size={iconSize} />
       </label>
       <Input
         type="text"
