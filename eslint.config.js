@@ -44,7 +44,7 @@ export default [
       ...typescript.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': 'off', // TEMPORARY!!!
+      '@typescript-eslint/no-unused-vars': 'warn', // 'off' is TEMPORARY
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
     },

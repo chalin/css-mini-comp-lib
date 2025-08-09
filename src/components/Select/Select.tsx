@@ -85,7 +85,6 @@ const DisplayedOption = styled.div`
 
 const Select: React.FC<SelectProps> = ({
   id,
-  label,
   value,
   onChange,
   children,

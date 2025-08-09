@@ -23,7 +23,6 @@ const IconInput: React.FC<IconInputProps> = ({
   placeholder,
 }) => {
   const strokeWidth = size === 'small' ? 1 : 2;
-  const iconSize = size === 'small' ? 16 : 24;
   const width = _width && _width < minWidth ? minWidth : _width;
   const widthProp = width
     ? ({ '--width': `${width}px` } as React.CSSProperties)

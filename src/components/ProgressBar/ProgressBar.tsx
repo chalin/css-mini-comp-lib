@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { COLORS } from '../../constants';
 import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
 import styles from './ProgressBar.module.scss';
 

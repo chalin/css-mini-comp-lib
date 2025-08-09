@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import ProgressBar from './ProgressBar';
 import type { Size } from './ProgressBar';
